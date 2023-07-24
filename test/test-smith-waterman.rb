@@ -33,5 +33,5 @@ a = sw.alignment(target,input)
 assert("ACTCAGGGTTCAAACAGCTAAT-GAGGAGACTAAGGAGGTCAGCCTCCTGCTGTCTGTGGCCTACA",a.alignmentI)
 assert("A-T-AGG--TCAACCAGTTGATCGCTGAGATGAAACA---CAGCCCCCT-CTG-CTGTCCCATTCC",a.alignmentJ)
 assert(":.:.:::..::::.:::.:.::.:..::::..::..:...:::::.:::.:::.::::..:.:.:.",a.alignment)
-assert(4,a.alignment_count)
+assert(41,a.alignment_count)
 assert(254,(a.score*10).to_i) # 25.47
