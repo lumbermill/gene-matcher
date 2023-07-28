@@ -25,14 +25,14 @@ class SmithWaterman
 
     # 行列の初期化
 
-    matrix = [[0] * input.length] * target.length
+    matrix = Array.new(target.length) { Array.new(input.length,0) }
     maxScore = 0; maxI = 0; maxJ = 0
-    matrix.each_with_index do |row,i|
+    target.length.times do |i|
       ci = target[i] # 検索対象文字
-      row.each_with_index do |col,j|
+      input.length.times do |j|
         cj = input[j] # 検索文字
         candidates = [0] * 4
-        candidates[0] = 0
+        candidates[0] = 0 # 未使用(常に0)
         if i > 0 && j > 0
           candidates[1] = matrix[i-1][j-1] + s(ci,cj)
         else
@@ -47,13 +47,13 @@ class SmithWaterman
         end
         matrix[i][j] = candidates.max
         # スコアの最大点を記憶
-        if matrix[i][j] > maxScore
+        if matrix[i][j] >= maxScore
           maxScore = matrix[i][j]
           maxI = i
           maxJ = j
         end
       end
-      puts ci+" "+row.join(" ") if ENV["DEBUG"]
+      puts ci+" "+matrix[i].join(" ") if ENV["DEBUG"]      
     end
     puts "maxScore=#{maxScore} maxI=#{maxI} maxJ=#{maxJ}" if ENV["DEBUG"]
 
@@ -91,7 +91,7 @@ class SmithWaterman
     if a.alignmentI.length <= 20
       a.score = 0
     else
-      a.score = a.alignment_count ** 2 / a.alignmentI.length
+      a.score = a.alignment_count ** 2 / a.alignmentI.length.to_f
     end
     return a
   end
