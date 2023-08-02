@@ -1,2 +1,24 @@
 # gene-matcher
 Algorithm for determining similar regions between nucleic acid sequences.
+
+
+```
+require 'gene-matcher'
+
+# Obtain regions from 2 sequences.
+sw = SmithWaterman.instance
+a = sw.alignment("AGTCAGTC","CAGC")
+a.alignmentI # => "CAGTC"
+a.alignmentJ # => "CAG-C"
+a.alignment  # => ":::.:"
+
+# Store alignments which satisfy the score condition.
+m = Matcher.new("GGAATGGGACAGCAGAGGGGGCTGTGTTTCATCTCAGCGATCAACTGGTTGACCTAT",0.1)
+m.scan("TGGGGTTCCAAGCTTGGTTTTCCAAATCCTGTCTCTCCAGCTCCTGCTCCNCTTAAGACCATTTGCTGTGTCAACCGGTCTGAAC
+TAGAGGAATCTGAGGTCAGCAGAGGTCACCCAGACTCAGGGTTCAAACAGCTAATGAGGAGACTAAGGAGGTCAGCCTCCTGCTGTCTGTGGCCTACATGGGAGCAGCGG
+CGATCTGGGAACAACACTGCGGTTTGAG")
+m.alignments # => #<Alignment:0x0000000108b02ff8>
+#   @alignmentI="ACTCAGGGTTCAAACAGCTAAT-GAGGAGACTAAGGAGGTCAGCCTCCTGCTGTCTGTGGCCTACA",
+#   @alignmentJ="A-T-AGG--TCAACCAGTTGATCGCTGAGATGAAACA---CAGCCCCCT-CTG-CTGTCCCATTCC",
+#   @score=25.46969696969697,
+```

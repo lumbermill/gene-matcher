@@ -1,9 +1,20 @@
 
+require_relative 'smith-waterman'
 
 class Matcher
-  # TODO これはegtc側に移動する
-  def findAlignments(sequence, limit=0.6, database)
+  attr_accessor :input_sequence, :limit
+  attr_reader :alignments
+
+  def initialize(input_sequence, limit = 0.6)
+    @limit = limit
+    @input_sequence = input_sequence
+    @alignments = []
+  end
+
+  def scan(target_sequence)
+    sw = SmithWaterman.instance
+    a = sw.alignment(target_sequence, @input_sequence)
+    @alignments += [a] if a.score >= @limit
   end
 end
 
-## DBとどう繋ぐか？
