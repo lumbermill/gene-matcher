@@ -27,16 +27,16 @@ class Alignment
 
   def init_from_hash(h)
     # 引数のハッシュから初期化
-    @score = h[:score]
-    @alignmentI = h[:alignmentI]
-    @alignmentJ = h[:alignmentJ]
-    @startI = h[:startI]
-    @startJ = h[:startJ]
-    @endI = h[:endI]
-    @endJ = h[:endJ]
-    @reversed = h[:reversed]
-    @aside = h[:aside]
-    @source = h[:source]
+    @score = h["score"]
+    @alignmentI = h["alignmentI"]
+    @alignmentJ = h["alignmentJ"]
+    @startI = h["startI"]
+    @startJ = h["startJ"]
+    @endI = h["endI"]
+    @endJ = h["endJ"]
+    @reversed = h["reversed"]
+    @aside = h["aside"]
+    @source = h["source"]
   end
 
   # 二つの配列の一致部分と不一致部分を表した文字列を返す。
