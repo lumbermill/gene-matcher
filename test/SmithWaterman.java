@@ -66,7 +66,7 @@ public class SmithWaterman{
      */
     private Alignment getAlignmentLocal(String input, String target) {
         if(input == null) throw new NullPointerException("input can't be null.");
-        if(input == null) throw new NullPointerException("target can't be null.");
+        if(target == null) throw new NullPointerException("target can't be null.");
         
 		int matrix[][] = new int[target.length()][input.length()];
 		int maxScore = 0, maxI = 0, maxJ = 0;

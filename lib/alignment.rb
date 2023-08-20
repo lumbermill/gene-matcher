@@ -3,7 +3,8 @@ class Alignment
 
   BLANK = "-"
 
-  def initialize
+  def initialize(h=nil)
+    return init_from_hash(h) if h
     # スコア
     @score = 0
     # 検索対象（データベースに入っていた）配列
@@ -22,6 +23,20 @@ class Alignment
     @aside = false
     # アライメント対象配列の取得先。egtcの場合、クローンテーブルまたはアクセッションテーブル
     @source = ""
+  end
+
+  def init_from_hash(h)
+    # 引数のハッシュから初期化
+    @score = h[:score]
+    @alignmentI = h[:alignmentI]
+    @alignmentJ = h[:alignmentJ]
+    @startI = h[:startI]
+    @startJ = h[:startJ]
+    @endI = h[:endI]
+    @endJ = h[:endJ]
+    @reversed = h[:reversed]
+    @aside = h[:aside]
+    @source = h[:source]
   end
 
   # 二つの配列の一致部分と不一致部分を表した文字列を返す。

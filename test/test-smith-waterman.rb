@@ -35,3 +35,18 @@ assert("A-T-AGG--TCAACCAGTTGATCGCTGAGATGAAACA---CAGCCCCCT-CTG-CTGTCCCATTCC",a.al
 assert(":.:.:::..::::.:::.:.::.:..::::..::..:...:::::.:::.:::.::::..:.:.:.",a.alignment)
 assert(41,a.alignment_count)
 assert(254,(a.score*10).to_i) # 25.47
+
+# Test initialize Alignment from hash.
+
+h = {score: 1, alignmentI: "a", alignmentJ: "b", startI: 2, startJ: 3, endI: 4, endJ: 5, reversed: true, aside: true, source: "c"}
+a = Alignment.new(h)
+assert(1,a.score)
+assert("a",a.alignmentI)
+assert("b",a.alignmentJ)
+assert(2,a.startI)
+assert(3,a.startJ)
+assert(4,a.endI)
+assert(5,a.endJ)
+assert(true,a.reversed)
+assert(true,a.aside)
+assert("c",a.source)
