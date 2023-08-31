@@ -39,6 +39,22 @@ class Alignment
     @source = h["source"]
   end
 
+  def to_h
+    # ハッシュに変換
+    h = {}
+    h["score"] = @score
+    h["alignmentI"] = @alignmentI
+    h["alignmentJ"] = @alignmentJ
+    h["startI"] = @startI
+    h["startJ"] = @startJ
+    h["endI"] = @endI
+    h["endJ"] = @endJ
+    h["reversed"] = @reversed
+    h["aside"] = @aside
+    h["source"] = @source
+    return h
+  end
+
   # 二つの配列の一致部分と不一致部分を表した文字列を返す。
   # ex. AGTCAAAAAAAAA- :...:::::::::. AT-TAAAAAAAAAG
   # 
