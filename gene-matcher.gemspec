@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'gene-matcher'
-  s.version     = '0.1.4'
+  s.version     = '0.1.5'
   s.date        = '2023-08-31'
   s.summary     = "Algorithm for determining similar regions between nucleic acid sequences."
   s.description = "Algorithm for determining similar regions between nucleic acid sequences."
