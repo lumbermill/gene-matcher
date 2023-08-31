@@ -1,18 +1,5 @@
 require_relative '../lib/smith-waterman'
-
-def assert(expected,actual)
-  if expected.is_a?(String) || expected.is_a?(Integer) ||
-    expected == true || expected == false || expected == nil
-    raise "Expected: #{expected}, Actual: #{actual}" unless expected == actual
-  elsif expected.is_a? Array
-    raise "Expected: #{expected}, Actual: #{actual}" if expected.count != actual.count
-    expected.each_with_index do |e,i|
-      assert(e,actual[i])
-    end
-  else
-    raise "Unknown class for: #{expected} ,#{actual}"
-  end
-end
+require_relative './test-common'
 
 # Test class for SmithWaterman
 
@@ -38,7 +25,7 @@ assert(254,(a.score*10).to_i) # 25.47
 
 # Test initialize Alignment from hash.
 
-h = {score: 1, alignmentI: "a", alignmentJ: "b", startI: 2, startJ: 3, endI: 4, endJ: 5, reversed: true, aside: true, source: "c"}
+h = {"score" => 1, "alignmentI" => "a", "alignmentJ" => "b", "startI" => 2, "startJ" => 3, "endI" => 4, "endJ" => 5, "reversed" => true, "aside" => true, "source" => "c"}
 a = Alignment.new(h)
 assert(1,a.score)
 assert("a",a.alignmentI)

@@ -21,8 +21,8 @@ class Alignment
     @reversed = false
     # 逆の鎖
     @aside = false
-    # アライメント対象配列の取得先。egtcの場合、クローンテーブルまたはアクセッションテーブル
-    @source = ""
+    # アライメント対象配列の取得先情報(任意)。例えば、データベースのテーブル名やIDなど。
+    @source = {}
   end
 
   def init_from_hash(h)
