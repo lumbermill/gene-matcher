@@ -1,3 +1,5 @@
+$n_passed = 0;
+
 def assert(expected,actual)
   if expected.is_a?(String) || expected.is_a?(Integer) || expected.is_a?(Float) ||
     expected == true || expected == false || expected == nil
@@ -10,4 +12,5 @@ def assert(expected,actual)
   else
     raise "Unknown class for: #{expected} ,#{actual}"
   end
+  $n_passed += 1
 end

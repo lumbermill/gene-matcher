@@ -88,11 +88,7 @@ class SmithWaterman
     a.startI = i
     a.startJ = j
 
-    if a.alignmentI.length <= 20
-      a.score = 0
-    else
-      a.score = a.alignment_count ** 2 / a.alignmentI.length.to_f
-    end
+    # スコアはここでは求めない(Java版ではここで決定していた)
     return a
   end
 

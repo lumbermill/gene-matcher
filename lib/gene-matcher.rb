@@ -14,7 +14,7 @@ class Matcher
   def scan(target_sequence,source = {})
     sw = SmithWaterman.instance
     a = sw.alignment(target_sequence, @input_sequence)
-    a.source = source
+    a.source = {target_sequence: target_sequence}.merge(source)
     puts "#{a.score} / #{a.alignment_count} = #{a.score / a.alignment_count}" if ENV["DEBUG"]
     @alignments += [a] if a.score / a.alignment_count >= @limit
   end

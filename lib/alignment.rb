@@ -1,12 +1,10 @@
 class Alignment
-  attr_accessor :score, :alignmentI, :alignmentJ, :startI, :startJ, :endI, :endJ, :reversed, :aside, :source
+  attr_accessor :alignmentI, :alignmentJ, :startI, :startJ, :endI, :endJ, :reversed, :aside, :source
 
   BLANK = "-"
 
   def initialize(h=nil)
     return init_from_hash(h) if h
-    # スコア
-    @score = 0
     # 検索対象（データベースに入っていた）配列
     @alignmentI = ""
     # 検索した（クエリ=入力された）配列
@@ -27,7 +25,6 @@ class Alignment
 
   def init_from_hash(h)
     # 引数のハッシュから初期化
-    @score = h["score"]
     @alignmentI = h["alignmentI"]
     @alignmentJ = h["alignmentJ"]
     @startI = h["startI"]
@@ -42,7 +39,6 @@ class Alignment
   def to_h
     # ハッシュに変換
     h = {}
-    h["score"] = @score
     h["alignmentI"] = @alignmentI
     h["alignmentJ"] = @alignmentJ
     h["startI"] = @startI
@@ -87,7 +83,17 @@ class Alignment
   def number_of_blank
   end
 
+  def score_a
+    return alignment_count / @alignmentI.length.to_f
+  end
+
+  def score(thresh=20)
+    # 長さがthresh以下なら0を返す
+    return 0 if @alignmentI.length < thresh
+    return alignment_count * score_a
+  end
+
   def to_s
-    "score=#{@score} I=" + @alignmentI + " J=" + @alignmentJ;
+    "score=#{score} I=" + @alignmentI + " J=" + @alignmentJ;
   end
 end
