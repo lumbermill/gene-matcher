@@ -84,6 +84,7 @@ class Alignment
   end
 
   def score_a
+    return 0 if @alignmentI.length == 0
     return alignment_count / @alignmentI.length.to_f
   end
 
