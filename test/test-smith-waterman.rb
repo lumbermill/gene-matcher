@@ -25,9 +25,9 @@ assert(254,(a.score*10).to_i) # 25.47
 
 # Test initialize Alignment from hash.
 
-h = {"score" => 1, "alignmentI" => "a", "alignmentJ" => "b", "startI" => 2, "startJ" => 3, "endI" => 4, "endJ" => 5, "reversed" => true, "aside" => true, "source" => "c"}
+h = {"score" => 999, "alignmentI" => "a", "alignmentJ" => "b", "startI" => 2, "startJ" => 3, "endI" => 4, "endJ" => 5, "reversed" => true, "aside" => true, "source" => "c"}
 a = Alignment.new(h)
-assert(1,a.score)
+assert(0,a.score) # because the length is shorter than the threshold(20).
 assert("a",a.alignmentI)
 assert("b",a.alignmentJ)
 assert(2,a.startI)
